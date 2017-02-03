@@ -50,8 +50,8 @@
           			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
           			<h3 class="modal-title">Add Client</h3>
           		</div>
-              <form>
           		<div class="modal-body">
+                <form id="frmClient" name="frmClient" novalidate="">
                 <div class="form-group">
                   <label for="companyID">Company ID</label>
                   <input type="text" class="form-control" id="companyID" placeholder="SAMPLE001" disabled>
@@ -65,6 +65,7 @@
                   <input type="email" class="form-control" id="companyAddress" placeholder="Sample Email Address">
                 </div>
           		</div>
+            </form>
           		<div class="modal-footer">
           			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
           				<div class="btn-group" role="group">
@@ -78,7 +79,6 @@
                   </div>
                 </div>
               </div>
-             </form>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
                   <?php $no=1; ?>
                 </thead>
 
-                <tbody>
+                <tbody id="client-list" name="client-list">
                   @foreach ($companys as $company)
                     <tr class="item{{ $company->intCompanyID }}">
                       <td>CMPNY{{ $no++ }}</td>
