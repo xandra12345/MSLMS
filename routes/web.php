@@ -23,10 +23,6 @@ Route::get('/index', function() {
     return view('wagon.index');
 });
 
-Route::get('/maintenance/client', function() {
-    return view('wagon.maintenance.client');
-});
-
 Route::get('/maintenance/personnel', function() {
     return view('wagon.maintenance.personnel');
 });
@@ -37,4 +33,8 @@ Route::get('/maintenance/services', function() {
 
 Route::get('/maintenance/vehicle', function() {
     return view('wagon.maintenance.vehicle');
+});
+
+Route::group(['middleware' => ['web']], function() {
+    Route::resource('/maintenance/client', 'CompanyController');
 });

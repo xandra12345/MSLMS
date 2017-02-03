@@ -70,7 +70,7 @@ body {
   color: #ffffff;
 }
 
-/* Custom Coloring and CSS*/
+/* Custom Coloring and Positioning*/
 
 .main-color-bg {
   background-color: #ff7d00 !important;
@@ -111,10 +111,6 @@ body {
 
 .dash-box{
   text-align: center;
-}
-
-.btn-space {
-  margin-left: 10px;
 }
 
 /* Modal */
