@@ -1,7 +1,7 @@
 @extends('wagonmain')
 
 @section('content')
-  
+
   <header id="header">
     <div class="container">
       <div class="row">
@@ -51,21 +51,21 @@
           			<h3 class="modal-title">Add Client</h3>
           		</div>
           		<div class="modal-body">
-          			<form>
-                  <div class="form-group">
-                    <label for="companyID">Company ID</label>
-                    <input type="text" class="form-control" id="companyID" placeholder="SAMPLE001" disabled>
-                  </div>
-                  <div class="form-group">
-                    <label for="companyName">Company Name</label>
-                    <input type="text" class="form-control" id="companyName" placeholder="Sample Incorporated">
-                  </div>
-                  <div class="form-group">
-                    <label for="companyAddress">Company Address</label>
-                    <input type="text" class="form-control" id="companyAddress" placeholder="Sample Address">
-                  </div>
-                </form>
+                <form id="frmClient" name="frmClient" novalidate="">
+                <div class="form-group">
+                  <label for="companyID">Company ID</label>
+                  <input type="text" class="form-control" id="companyID" placeholder="SAMPLE001" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="companyName">Company Name</label>
+                  <input type="text" class="form-control" id="companyName" placeholder="Sample Company Name">
+                </div>
+                <div class="form-group">
+                  <label for="companyAddress">Email Address</label>
+                  <input type="email" class="form-control" id="companyAddress" placeholder="Sample Email Address">
+                </div>
           		</div>
+            </form>
           		<div class="modal-footer">
           			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
           				<div class="btn-group" role="group">
@@ -90,61 +90,33 @@
             </div>
             <div class="panel-body">
               <table class="table table-hover table-responsive">
+
                 <thead class="main-color-bg">
                   <tr>
-                    <th class="text-center">Client ID</th>
-                    <th class="text-center">Company Name</th>
-                    <th class="text-center">Contact Person</th>
-                    <th class="text-center">Contact</th>
+                    <th>Company ID</th>
+                    <th>Company Name</th>
+                    <th>Email</th>
                     <th class="text-center">Action</th>
                   </tr>
+                  {{ csrf_field() }}
+                  <?php $no=1; ?>
                 </thead>
-                <tbody class="text-center">
-                  <tr>
-                    <th scope="row">CLIENT001</th>
-                    <td>Company Enterprise</td>
-                    <td>Tyron delos Reyes</td>
-                    <td>614-5481</td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Details</button>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Update</button>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">CLIENT002</th>
-                    <td>Company Association</td>
-                    <td>Xandra Subiera</td>
-                    <td>614-5482</td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Details</button>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Update</button>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">CLIENT003</th>
-                    <td>Company Incorporated</td>
-                    <td>Wandy Beby</td>
-                    <td>614-5483</td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Details</button>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Update</button>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">CLIENT004</th>
-                    <td>Company Inc.</td>
-                    <td>Nards Paragas</td>
-                    <td>614-5484</td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Details</button>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Update</button>
-                      <button type="button" class="btn btn-sm btn-space main-color-bg">Delete</button>
-                    </td>
-                  </tr>
+
+                <tbody id="client-list" name="client-list">
+                  @foreach ($companys as $company)
+                    <tr class="item{{ $company->intCompanyID }}">
+                      <td>CMPNY{{ $no++ }}</td>
+                      <td>{{ $company->strCompanyName }}</td>
+                      <td>{{ $company->strCompanyEmail }}</td>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-sm btn-space main-color-bg">Details</button>
+                        <button type="button" class="btn btn-sm btn-space main-color-bg" data-id="{{ $company->intCompanyID }}" data-title="{{ $company->strCompanyName }}" data-description="{{ $company->strCompanyEmail }}">Edit</button>
+                        <button type="button" class="btn btn-sm btn-space main-color-bg" data-id="{{ $company->intCompanyID }}" data-title="{{ $company->strCompanyName }}" data-description="{{ $company->strCompanyEmail }}">Delete</button>
+                      </td>
+                    </tr>
+                  @endforeach
                 </tbody>
+
               </table>
             </div>
             <div class="panel-footer">

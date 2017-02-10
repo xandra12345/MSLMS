@@ -53,5 +53,7 @@
     <script src="{{ asset('/js/jquery/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap/bootstrap.min.js') }}"></script>
 
+    <!--Ajax-->
+    
   </body>
 </html>
