@@ -38,3 +38,5 @@ Route::get('/maintenance/vehicle', function() {
 Route::group(['middleware' => ['web']], function() {
     Route::resource('/maintenance/client', 'CompanyController');
 });
+
+/*Test*/
